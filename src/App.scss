@@ -1,0 +1,52 @@
+#root {
+    width: 200px;
+    margin: auto;
+    .result {
+        height: 40px;
+        background-color: gray;
+        color: #fff;
+        border-radius: 10px;
+        margin-bottom: 2px;
+        .resultValue {
+            text-align: end;
+            height: 100%;
+            font-size: 30px;
+            padding-right: 15px;
+        }
+    }
+    .button-wrapper {
+        display: flex;
+        justify-content: center;
+        background: #000;
+        border-radius: 10px;
+        button {
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            margin: 5px;
+            background-color: #555555;
+            border: none;
+            color: white;
+            font-size: 25px;
+            padding: 0;
+            outline: none;
+            &:hover {
+                background-color: #999999;
+            }
+        }
+        .operator {
+            display: flex;
+            flex-direction: column;
+            button {
+                background-color: orange;
+                &:hover {
+                    background-color: #ffc7af;
+                }
+                &:focus {
+                    background-color: #fff;
+                    color: orange;
+                }
+            }
+        }
+    }
+}
