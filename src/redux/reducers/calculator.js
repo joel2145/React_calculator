@@ -16,7 +16,7 @@ const initialAppState={
   showingResult: false,
 }
 
-const calculator = (state = initialAppState, action) => {
+export const calculator = (state = initialAppState, action) => {
   switch (action.type) {
     case INPUT_NUMBER:
       return {
