@@ -26,7 +26,11 @@ const App = (props) => {
     return (
         <React.Fragment>
             <div className="result">
-                <Result result={calculator.showingResult ? calculator.resultValue :calculator.inputValue}/>
+                <Result result={
+                    calculator.showingResult
+                        ? calculator.resultValue
+                        : calculator.inputValue
+                } />
             </div>
             <div className="button-wrapper">
                 <div className="number">

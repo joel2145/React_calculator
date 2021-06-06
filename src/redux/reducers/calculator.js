@@ -8,13 +8,13 @@ import {
   CLEAR,
 } from "../actions/types";
 
-const initialAppState={
+const initialAppState = {
   inputValue: 0,
   operator: "",
   resultValue: 0,
   calculate: false,
   showingResult: false,
-}
+};
 
 export const calculator = (state = initialAppState, action) => {
   switch (action.type) {
@@ -117,7 +117,7 @@ export const calculator = (state = initialAppState, action) => {
       return {
         inputValue: 0,
         operator: '',
-        calculate: true,
+        calculate:false,
         resultValue: 0,
         showingResult: false,
       };
