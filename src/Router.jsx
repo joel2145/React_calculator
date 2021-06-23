@@ -1,15 +1,17 @@
 import React from "react";
 import { Route, Switch } from "react-router";
+import { BrowserRouter } from 'react-router-dom';
 
-import { Calculator } from "./Calculator";
-import { Login } from "./Login";
+import { Login,Calculator } from "./templates";
 
 const Router = () => {
     return (
-        <Switch>
-            <Route exact path="/login" component={Login}/>
-            <Route exact path="(/)?" component={Calculator}/>
-        </Switch>
+        <BrowserRouter>
+            <Switch>
+                <Route exact path="/login" component={Login}/>
+                <Route exact path="(/)?" component={Calculator}/>
+            </Switch>
+        </BrowserRouter>
     )
 }
 

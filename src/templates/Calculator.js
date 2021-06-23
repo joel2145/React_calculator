@@ -8,10 +8,10 @@ import {
     onDivideClick,
     onEqualClick,
     onClearClick
-} from './redux/actions'
-import { Button } from './components/Button';
-import { Result } from './components/Result';
-import './App.scss';
+} from '../redux/actions'
+import { Button } from '../components/Button';
+import { Result } from '../components/Result';
+import '../App.scss';
 
 const Calculator = (props) => {
     const { calculator,

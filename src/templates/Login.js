@@ -1,8 +1,11 @@
-import Signin from './templates/Signin';
+import React from 'react';
 import firebase from 'firebase/app';
 import "firebase/auth";
-import React from 'react';
-import './App.scss';
+import { useDispatch } from 'react-redux';
+import { push } from 'connected-react-router';
+
+import  Signin  from './Signin.js';
+import '../App.scss';
 
 
 const firebaseConfig = {
@@ -17,12 +20,15 @@ const firebaseConfig = {
 }
 firebase.initializeApp(firebaseConfig);
 
-export const Login = () => {
+const Login = () => {
+    const dispatch = useDispatch()
+    const path = require('path');
+
     return (
-    <div className="AuthApp">
-        <Signin />
-    </div>
+        <div className="AuthApp">
+            <Signin />
+        </div>
     );
 }
 
-// export default AuthApp;
+export default Login;
