@@ -17,7 +17,7 @@ const firebaseConfig = {
 }
 firebase.initializeApp(firebaseConfig);
 
-export const AuthApp = () => {
+export const Login = () => {
     return (
     <div className="AuthApp">
         <Signin />

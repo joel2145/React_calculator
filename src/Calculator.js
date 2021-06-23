@@ -13,7 +13,7 @@ import { Button } from './components/Button';
 import { Result } from './components/Result';
 import './App.scss';
 
-const App = (props) => {
+const Calculator = (props) => {
     const { calculator,
         onNumberClick,
         onPlusClick,
@@ -80,4 +80,4 @@ export default connect(mapStateToDoProps, {
     onDivideClick,
     onEqualClick,
     onClearClick
-})(App);
+})(Calculator);
