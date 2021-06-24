@@ -49,6 +49,16 @@
             }
         }
     }
+    button {
+        border:1px;
+        border-radius: 10px;
+    }
+    button:hover{
+        background-color: paleturquoise;
+        border:none;
+        border-radius: 10px;
+        cursor: pointer;
+    }
     .login{
         display: flex;
         justify-content: center;
