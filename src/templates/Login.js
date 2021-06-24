@@ -1,8 +1,6 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import "firebase/auth";
-import { useDispatch } from 'react-redux';
-import { push } from 'connected-react-router';
 
 import  Signin  from './Signin.js';
 import '../App.scss';
@@ -21,8 +19,6 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 
 const Login = () => {
-    const dispatch = useDispatch()
-    const path = require('path');
 
     return (
         <div className="AuthApp">

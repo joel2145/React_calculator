@@ -24,7 +24,6 @@ const Calculator = (props) => {
         onClearClick
     } = props;
 
-    const [history,setHistory] = useState(["1+1=2","2+2=4"]);
     return (
         <React.Fragment>
             <div className="result">
@@ -67,14 +66,10 @@ const Calculator = (props) => {
             <div>
                 <p>計算の履歴</p>
                 <ul>
-                    {history.map((log) => {
-                        return (
-                            <div key={log}>
-                                <li>{log}</li>
-                                <button>削除</button>
-                            </div>
-                        );
-                    })}
+                    <div key={calculator.displayResult}>
+                        <li>{calculator.displayResult}</li>
+                        <button>削除</button>
+                    </div>
                 </ul>
             </div>
         </React.Fragment>

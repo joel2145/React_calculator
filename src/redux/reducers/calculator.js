@@ -14,6 +14,7 @@ const initialAppState = {
   resultValue: 0,
   calculate: false,
   showingResult: false,
+  displayResult:"",
 };
 
 export const calculator = (state = initialAppState, action) => {
@@ -120,6 +121,7 @@ export const calculator = (state = initialAppState, action) => {
         calculate:false,
         resultValue: 0,
         showingResult: false,
+        displayResult:"",
       };
 
     case EQUAL:
@@ -131,6 +133,7 @@ export const calculator = (state = initialAppState, action) => {
             calculate: false,
             resultValue: state.resultValue + state.inputValue,
             showingResult: true,
+            displayResult: `${state.resultValue} + ${state.inputValue} = ${state.resultValue + state.inputValue}`,
           };
         case '-':
           return {
@@ -139,6 +142,7 @@ export const calculator = (state = initialAppState, action) => {
             calculate: false,
             resultValue: state.resultValue - state.inputValue,
             showingResult: true,
+            displayResult: `${state.resultValue} - ${state.inputValue} = ${state.resultValue - state.inputValue}`,
           };
         case '*':
           return {
@@ -147,6 +151,7 @@ export const calculator = (state = initialAppState, action) => {
             calculate: false,
             resultValue: state.resultValue * state.inputValue,
             showingResult: true,
+            displayResult: `${state.resultValue} × ${state.inputValue} = ${state.resultValue * state.inputValue}`,
           };
         case '/':
           return {
@@ -155,6 +160,7 @@ export const calculator = (state = initialAppState, action) => {
             calculate: false,
             resultValue: state.resultValue / state.inputValue,
             showingResult: true,
+            displayResult: `${state.resultValue} ÷ ${state.inputValue} = ${state.resultValue / state.inputValue}`,
           };
         default:
           return state;

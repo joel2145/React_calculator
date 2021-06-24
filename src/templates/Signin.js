@@ -1,8 +1,6 @@
 import React from 'react';
 import firebase from 'firebase/app';
 import '../App.scss';
-import { useDispatch } from "react-redux";
-import { push } from "connected-react-router";
 
 const Signin = () => {
 
