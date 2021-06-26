@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import {
     onNumberClick,
@@ -11,7 +11,9 @@ import {
 } from '../redux/actions'
 import { Button } from '../components/Button';
 import { Result } from '../components/Result';
+import {db} from "../firebase/index"
 import '../App.scss';
+// import { DisplayHistory } from '../components/DisplayHistory';
 
 const Calculator = (props) => {
     const { calculator,
@@ -23,6 +25,13 @@ const Calculator = (props) => {
         onEqualClick,
         onClearClick
     } = props;
+
+    db.collection("history").get().then((querySnapshot) => {
+    querySnapshot.forEach((doc) => {
+        // doc.data() is never undefined for query doc snapshots
+        console.log(doc.id, " => ", doc.data());
+        });
+    });
 
     return (
         <React.Fragment>
