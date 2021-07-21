@@ -13,7 +13,6 @@ import { Button } from "../components/Button";
 import { Result } from "../components/Result";
 import { db } from "../firebase/index";
 import "../App.scss";
-// import { DisplayHistory } from '../components/DisplayHistory';
 
 const Calculator = (props) => {
   const {
@@ -28,22 +27,18 @@ const Calculator = (props) => {
   } = props;
 
   const [history, setHistory] = useState([]);
-
-  const equalFunction = () => {
+  const equalFunction = (props) => {
     onEqualClick();
-    console.log("setData")
+    // DBに新たなデータを追加する
     const data = {
-      title: calculator.displayResult,
+      title: props.history,
       dateTime: new Date(),
     }
     db.collection("history").doc().set(data);
-    // let list = history;
-    history.push(data)
-    console.log(calculator.displayResult)
-
-    // setHistory(list.push(data));
+    history.push(data);
   }
 
+  // 最初に過去の履歴をDBから取得して表示させる
   useEffect(() => {
     let list = [];
     (async () => {
@@ -51,15 +46,14 @@ const Calculator = (props) => {
         .get()
         .then((querySnapshot) => {
           querySnapshot.forEach((doc) => {
-            // doc.data() is never undefined for query doc snapshots
             list.push(doc.data());
           });
         });
       console.log(list);
       setHistory(list);
-    })()
+    })();
   }, []);
-  console.log(calculator.displayResult)
+
   return (
     <React.Fragment>
       <div className="result">
@@ -94,7 +88,7 @@ const Calculator = (props) => {
             <Button
               text={"="}
               history={history}
-              onClick={() => equalFunction()}
+              onClick={() => equalFunction(calculator)}
             />
           </div>
         </div>
@@ -108,13 +102,12 @@ const Calculator = (props) => {
       <div>
         <p>計算の履歴</p>
         <ul>
-          <div key={calculator.displayResult}>
-            {calculator.history.map((value) => (
-              <li>{value}</li>
-            ))}
-
-            <button>削除</button>
-          </div>
+          {/* 過去の履歴を最初に表示させる */}
+          <li key={history}>{history}</li>
+          {/* 新規の履歴を表示させる */}
+          {calculator.history.map((value) => (
+            <li key={value}>{value}</li>
+          ))}
         </ul>
       </div>
     </React.Fragment>
