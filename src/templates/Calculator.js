@@ -27,6 +27,7 @@ const Calculator = (props) => {
   } = props;
 
   const [history, setHistory] = useState([]);
+
   const equalFunction = (props) => {
     onEqualClick();
     // DBに新たなデータを追加する
@@ -49,8 +50,9 @@ const Calculator = (props) => {
             list.push(doc.data());
           });
         });
-      console.log(list);
-      setHistory(list);
+      for (let i = 0; i < list.length; i++) {
+        console.log(list[i].title);
+      }
     })();
   }, []);
 
