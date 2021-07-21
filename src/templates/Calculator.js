@@ -108,9 +108,9 @@ const Calculator = (props) => {
           {/* 過去の履歴を最初に表示させる */}
           <li>{history}</li>
           {/* 新規の履歴を表示させる */}
-          {calculator.history.map((value) => (
+          {/* {calculator.history.map((value) => (
             <li key={value}>{value}</li>
-          ))}
+          ))} */}
         </ul>
       </div>
     </React.Fragment>
