@@ -50,10 +50,7 @@ const Calculator = (props) => {
             list.push(doc.data());
           });
         });
-      for (let i = 0; i < list.length; i++) {
-        console.log(list[i].title);
-        setHistory(list[i].title);
-      };
+      setHistory(list)
     })();
   }, []);
 
@@ -105,12 +102,10 @@ const Calculator = (props) => {
       <div>
         <p>計算の履歴</p>
         <ul>
-          {/* 過去の履歴を最初に表示させる */}
-          <li>{history}</li>
-          {/* 新規の履歴を表示させる */}
-          {/* {calculator.history.map((value) => (
-            <li key={value}>{value}</li>
-          ))} */}
+          {/* 履歴を表示させる */}
+          {history.map((history, index) => (
+            <li key={index}>{history.title}</li>
+          ))}
         </ul>
       </div>
     </React.Fragment>
