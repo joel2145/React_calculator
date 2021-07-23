@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
+import { useHistory } from 'react-router-dom';
+
 import {
   onNumberClick,
   onPlusClick,
@@ -11,7 +13,7 @@ import {
 } from "../redux/actions";
 import { Button } from "../components/Button";
 import { Result } from "../components/Result";
-import { db } from "../firebase/index";
+import { db, auth } from "../firebase/index";
 import "../App.scss";
 
 const Calculator = (props) => {
@@ -54,8 +56,16 @@ const Calculator = (props) => {
     })();
   }, []);
 
+  // ログアウト機能
+  const History = useHistory();
+  const handleLogout = () => {
+    auth.signOut();
+    History.push('/login');
+  };
+
   return (
     <React.Fragment>
+      <button onClick={handleLogout}>ログアウト</button>
       <div className="result">
         <Result
           result={
