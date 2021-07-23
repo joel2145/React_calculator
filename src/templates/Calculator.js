@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
 
 import {
   onNumberClick,
@@ -15,6 +15,7 @@ import { Button } from "../components/Button";
 import { Result } from "../components/Result";
 import { db, auth } from "../firebase/index";
 import "../App.scss";
+import { useAuthContext } from '../firebase/AuthContext';
 
 const Calculator = (props) => {
   const {
@@ -62,6 +63,14 @@ const Calculator = (props) => {
     auth.signOut();
     History.push('/login');
   };
+
+  // ログインしないで電卓画面へいこうとすると、ログイン画面へリダイレクトさせる
+  const { user } = useAuthContext();
+  if (user) {
+    console.log("ログインできています");
+  } else {
+    console.log("ログインしろ〜");
+  }
 
   return (
     <React.Fragment>
