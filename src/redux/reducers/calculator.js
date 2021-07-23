@@ -1,17 +1,184 @@
 import {
-    INPUT_NUMBER,
-    PLUS,
-    MINUS,
-    MULTIPLY,
-    DIVIDE,
-    EQUAL,
-    CLEAR,
+  INPUT_NUMBER,
+  PLUS,
+  MINUS,
+  MULTIPLY,
+  DIVIDE,
+  EQUAL,
+  CLEAR,
 } from "../actions/types";
 
-const initialAppState={
-    inputValue: 0,
-    operator: "",
-    resultValue: 0,
-    calculate: false,
-    showingResult:false,
-}
+const initialAppState = {
+  inputValue: 0,
+  operator: "",
+  resultValue: 0,
+  calculate: false,
+  showingResult: false,
+  displayResult: "",
+  history: []
+};
+
+export const calculator = (state = initialAppState, action) => {
+  switch (action.type) {
+    case INPUT_NUMBER:
+      return {
+        ...state,
+        inputValue: state.inputValue * 10 + action.number,
+        showingResult: false,
+      };
+
+    case PLUS:
+      // 演算子が押されたときの処理
+      if (state.calculate === true) {
+        return {
+          ...state,
+          inputValue: 0,
+          operator: '+',
+          resultValue: state.resultValue + state.inputValue,
+          showingResult: true,
+        };
+      } // 1回も演算子が押されていないときの処理
+      else {
+        return {
+          ...state,
+          inputValue: 0,
+          operator: '+',
+          calculate: true,
+          resultValue: state.inputValue,
+          showingResult: true,
+        };
+      }
+
+    case MINUS:
+      // 演算子が押されたときの処理
+      if (state.calculate === true) {
+        return {
+          ...state,
+          inputValue: 0,
+          operator: '-',
+          resultValue: state.resultValue - state.inputValue,
+          showingResult: true,
+        };
+      } // 1回も演算子が押されていないときの処理
+      else {
+        return {
+          ...state,
+          inputValue: 0,
+          operator: '-',
+          calculate: true,
+          resultValue: state.inputValue,
+          showingResult: true,
+        };
+      }
+
+    case MULTIPLY:
+      // 演算子が押されたときの処理
+      if (state.calculate === true) {
+        return {
+          ...state,
+          inputValue: 0,
+          operator: '*',
+          resultValue: state.resultValue * state.inputValue,
+          showingResult: true,
+        };
+      } // 1回も演算子が押されていないときの処理
+      else {
+        return {
+          ...state,
+          inputValue: 0,
+          operator: '*',
+          calculate: true,
+          resultValue: state.inputValue,
+          showingResult: true,
+        };
+      }
+
+    case DIVIDE:
+      // 演算子が押されたときの処理
+      if (state.calculate === true) {
+        return {
+          ...state,
+          inputValue: 0,
+          operator: '/',
+          resultValue: state.resultValue / state.inputValue,
+          showingResult: true,
+        };
+      } // 1回も演算子が押されていないときの処理
+      else {
+        return {
+          ...state,
+          inputValue: 0,
+          operator: '/',
+          calculate: true,
+          resultValue: state.inputValue,
+          showingResult: true,
+        };
+      }
+
+    case CLEAR:
+      return {
+        ...state,
+        inputValue: 0,
+        operator: '',
+        calculate: false,
+        resultValue: 0,
+        showingResult: false,
+        displayResult: "",
+      };
+
+    case EQUAL:
+      switch (state.operator) {
+        case '+':
+          state.history.push(`${state.resultValue} + ${state.inputValue} = ${state.resultValue + state.inputValue}`)
+
+          return {
+            inputValue: state.resultValue + state.inputValue,
+            operator: '',
+            calculate: false,
+            resultValue: state.resultValue + state.inputValue,
+            showingResult: true,
+            displayResult: `${state.resultValue} + ${state.inputValue} = ${state.resultValue + state.inputValue}`,
+            history: state.history
+          };
+        case '-':
+          state.history.push(`${state.resultValue} - ${state.inputValue} = ${state.resultValue - state.inputValue}`)
+          return {
+            inputValue: state.resultValue - state.inputValue,
+            operator: '',
+            calculate: false,
+            resultValue: state.resultValue - state.inputValue,
+            showingResult: true,
+            displayResult: `${state.resultValue} - ${state.inputValue} = ${state.resultValue - state.inputValue}`,
+            history: state.history
+          };
+        case '*':
+          state.history.push(`${state.resultValue} x ${state.inputValue} = ${state.resultValue * state.inputValue}`)
+          return {
+            inputValue: state.resultValue * state.inputValue,
+            operator: '',
+            calculate: false,
+            resultValue: state.resultValue * state.inputValue,
+            showingResult: true,
+            displayResult: `${state.resultValue} × ${state.inputValue} = ${state.resultValue * state.inputValue}`,
+            history: state.history
+          };
+        case '/':
+          state.history.push(`${state.resultValue} ÷ ${state.inputValue} = ${state.resultValue / state.inputValue}`)
+          return {
+            inputValue: state.resultValue / state.inputValue,
+            operator: '',
+            calculate: false,
+            resultValue: state.resultValue / state.inputValue,
+            showingResult: true,
+            displayResult: `${state.resultValue} ÷ ${state.inputValue} = ${state.resultValue / state.inputValue}`,
+            history: state.history
+          };
+        default:
+          return state;
+      }
+    default:
+      return state;
+  }
+};
+
+export default calculator;
