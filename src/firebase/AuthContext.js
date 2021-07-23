@@ -1,18 +1,18 @@
-import { createContext, useState, useContext } from 'react';
+// import { createContext, useState, useContext } from 'react';
 
-// ユーザーがログインしているかを管理する
-const AuthContext = createContext();
+// // ユーザーがログインしているかを管理する
+// const AuthContext = createContext();
 
-export function useAuthContext() {
-    return useContext(AuthContext);
-};
+// export function useAuthContext() {
+//     return useContext(AuthContext);
+// };
 
-export function AuthProvider({ children }) {
-    const [user, setUser] = useState('');
+// export function AuthProvider({ children }) {
+//     const [user, setUser] = useState('');
 
-    const value = {
-        user,
-    };
+//     const value = {
+//         user,
+//     };
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
-};
+//     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+// };

@@ -11,7 +11,7 @@ const Signin = () => {
         // const dispatch = useDispatch();
         firebase.auth().signInWithPopup(provider)
             .then(user => {
-                alert("success : " + user.user.displayName + "さんでログインしました");
+                alert(user.user.displayName + "さんでログインしました!");
                 window.location.href = '/';
             })
             .catch(error => {
